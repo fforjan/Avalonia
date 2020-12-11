@@ -121,7 +121,7 @@ const int kVK_UpArrow = 0x7E;
 const int kVK_JIS_Kana = 0x68;
 
 // converts from AvaloniaKeys to UnicodeSpecial keys.
-std::map<AvnKey, int> s_UnicodeKeyMap =
+const std::map<AvnKey, int> s_UnicodeKeyMap =
 {
     { Up, NSUpArrowFunctionKey },
     { Down, NSDownArrowFunctionKey },
@@ -173,7 +173,7 @@ std::map<AvnKey, int> s_UnicodeKeyMap =
 };
 
 // Converts from Ansi virtual keys to Qwerty Keyboard map.
-std::map<int, const char*> s_QwertyKeyMap =
+const std::map<int, const char*> s_QwertyKeyMap =
 {
     { 0, "a" },
     { 1, "s" },
@@ -252,7 +252,7 @@ std::map<int, const char*> s_QwertyKeyMap =
 };
 
 // converts from ansi virtualkeys to AvnKeys.
- std::map<int, AvnKey> s_KeyMap =
+ const std::map<int, AvnKey> s_KeyMap =
  {
     {kVK_ANSI_A, A},
     {kVK_ANSI_S, S},
@@ -370,11 +370,11 @@ std::map<int, const char*> s_QwertyKeyMap =
     {kVK_JIS_Kana, AvnKeyKanaMode},
 };
 
-static std::map<AvnKey, int> BuildAvnKeyMap ()
+static const std::map<AvnKey, int> BuildAvnKeyMap ()
 {
     std::map<AvnKey, int> result;
     
-    for( auto it = s_KeyMap.begin(); it != s_KeyMap.end(); ++it )
+    for( auto it = s_KeyMap.cbegin(); it != s_KeyMap.cend(); ++it )
     {
         int key = it->first;
         AvnKey value = it->second;
@@ -386,5 +386,5 @@ static std::map<AvnKey, int> BuildAvnKeyMap ()
 }
 
 // Converts AvnKeys to Ansi VirtualKeys
-std::map<AvnKey, int> s_AvnKeyMap = BuildAvnKeyMap();
+const std::map<AvnKey, int> s_AvnKeyMap = BuildAvnKeyMap();
 

@@ -1583,7 +1583,7 @@ NSArray* AllLoopModes = [NSArray arrayWithObjects: NSDefaultRunLoopMode, NSEvent
         return;
     }
     
-    auto key = s_KeyMap[[event keyCode]];
+    const auto key = s_KeyMap.at([event keyCode]);
     
     auto timestamp = [event timestamp] * 1000;
     auto modifiers = [self getModifiers:[event modifierFlags]];
